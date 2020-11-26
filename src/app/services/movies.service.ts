@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Billboard, Movie } from '../models/billboard';
 
@@ -22,6 +22,10 @@ export class MoviesService {
     };
   }
 
+  resetBillboardPage(): void {
+    this.billboardPage = 1;
+  }
+
   getBillboard(): Observable<Movie[]> {
     // if (this.downloading) {
     //   return of([]);
@@ -38,5 +42,14 @@ export class MoviesService {
           this.downloading = false;
         })
       );
+  }
+
+  searchMovies(filter: string): Observable<Movie[]> {
+    const params = { ...this.params, page: '1', query: filter };
+    return this.http
+      .get<Billboard>(`${this.baseUrl}/search/movie`, {
+        params,
+      })
+      .pipe(map((resp) => resp.results));
   }
 }
