@@ -6,10 +6,4 @@ import { MoviesService } from './services/movies.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(private ms: MoviesService) {
-    this.ms.getBillboard().subscribe((resp) => {
-      console.log(resp);
-    });
-  }
-}
+export class AppComponent {}
