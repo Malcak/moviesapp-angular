@@ -1,11 +1,11 @@
-<h1>Billboard</h1>
+<h1 class="h1">Billboard</h1>
 <div class="row" *ngIf="billboard.length > 0">
   <div class="col">
     <app-slider [movies]="billboard"></app-slider>
   </div>
 </div>
 
-<h2 class="mt-5">Movies</h2>
+<h2 class="h1 mt-5">Movies</h2>
 <app-movies-poster-grid
   *ngIf="billboard.length > 0"
   [movies]="billboard"

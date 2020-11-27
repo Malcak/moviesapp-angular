@@ -19,7 +19,7 @@ export class MoviesService {
   get params(): {} {
     return {
       api_key: '37a083efdefcd3663056e6c88ce1d80e',
-      language: 'es-Es',
+      language: 'en-US',
       page: this.billboardPage.toString(),
     };
   }
