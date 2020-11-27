@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Movie } from 'src/app/models/billboard';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Movie } from 'src/app/models/billboard.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
+    this.activatedRoute.params.subscribe((params: Params) => {
       this.filter = params.filter;
       this.moviesService.searchMovies(params.filter).subscribe((resp) => {
         this.movies = resp;

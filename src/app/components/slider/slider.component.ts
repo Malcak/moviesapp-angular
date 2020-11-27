@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/billboard';
+import { Movie } from 'src/app/models/billboard.model';
 import Swiper from 'swiper';
 
 @Component({
