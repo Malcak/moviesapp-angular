@@ -10,7 +10,9 @@ import Swiper from 'swiper';
 export class CastSliderComponent implements OnInit, AfterViewInit {
   @Input() cast: Cast[];
 
-  constructor() {}
+  constructor() {
+    this.cast = [];
+  }
 
   ngOnInit(): void {}
 
