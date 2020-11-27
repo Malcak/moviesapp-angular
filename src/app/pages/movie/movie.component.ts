@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MovieDetail } from 'src/app/models/movie-detail.model';
 import { MoviesService } from 'src/app/services/movies.service';
 import { Cast } from 'src/app/models/credit.model';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-movie',
@@ -23,16 +24,17 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params;
-    this.moviesService.getMovieDetail(id).subscribe((movie) => {
+
+    combineLatest([
+      this.moviesService.getMovieDetail(id),
+      this.moviesService.getMovieCredits(id),
+    ]).subscribe(([movie, cast]) => {
       if (!movie) {
         this.router.navigateByUrl('/home');
         return;
       }
       this.movie = movie;
-    });
-    this.moviesService.getMovieCredits(id).subscribe((cast) => {
       this.cast = cast;
-      console.log(cast);
     });
   }
 
